@@ -1,19 +1,21 @@
-package com.maraujo.userregister.form.chain;
+package com.maraujo.userregister.service.chain;
 
-import com.maraujo.userregister.form.InputPayload;
-import com.maraujo.userregister.form.exception.InvalidInputException;
+import com.maraujo.userregister.service.RegisterPayload;
+import com.maraujo.userregister.exception.InvalidInputException;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_BEFORE_AFTER;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_FORMAT;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_BEFORE_AFTER;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_FORMAT;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
 
-public class ValidateBirthDate implements ExecutorChain<InputPayload>{
+@Component
+public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
 
     private static final int MIN_AGE = 1;
     private static final int MAX_AGE = 100;
@@ -21,7 +23,7 @@ public class ValidateBirthDate implements ExecutorChain<InputPayload>{
     public static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     @Override
-    public InputPayload execute(InputPayload payload) {
+    public RegisterPayload execute(RegisterPayload payload) {
         try {
             inputValidate(payload.getBirthDate());
         } catch (InvalidInputException ex){

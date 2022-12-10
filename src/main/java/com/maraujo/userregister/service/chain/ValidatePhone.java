@@ -1,21 +1,23 @@
-package com.maraujo.userregister.form.chain;
+package com.maraujo.userregister.service.chain;
 
-import com.maraujo.userregister.form.InputPayload;
-import com.maraujo.userregister.form.exception.InvalidInputException;
+import com.maraujo.userregister.service.RegisterPayload;
+import com.maraujo.userregister.exception.InvalidInputException;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_INVALID_PHONENUMBER;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_PHONENUMBER;
 
-public class ValidatePhone implements ExecutorChain<InputPayload> {
+@Component
+public class ValidatePhone implements ExecutorChain<RegisterPayload> {
 
     public static final String PHONE_NUMBER = "phoneNumber";
 
 
     @Override
-    public InputPayload execute(InputPayload payload) {
+    public RegisterPayload execute(RegisterPayload payload) {
         try {
             inputValidate(payload.getPhone());
         }catch (InvalidInputException ex){

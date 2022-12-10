@@ -1,4 +1,4 @@
-package com.maraujo.userregister.form;
+package com.maraujo.userregister.service;
 
 public class Constants {
 

@@ -1,23 +1,23 @@
-package com.maraujo.userregister.form.chain;
+package com.maraujo.userregister.service.chain;
 
-import com.maraujo.userregister.form.InputPayload;
-import com.maraujo.userregister.form.exception.InvalidInputException;
+import com.maraujo.userregister.service.RegisterPayload;
+import com.maraujo.userregister.exception.InvalidInputException;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_NAME_NOT_VALID;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_NAME_NOT_VALID;
 
 @Component
-public class ValidateName implements ExecutorChain<InputPayload> {
+public class ValidateName implements ExecutorChain<RegisterPayload> {
 
     public static final String REGEX_FULL_NAME = "^[a-zA-ZJ]+(([',. -][a-zA-ZJ ])?[a-zA-ZJ]*)*$";
     public static final String NAME = "name";
 
     @Override
-    public InputPayload execute(InputPayload payload) {
+    public RegisterPayload execute(RegisterPayload payload) {
         try {
             inputValidate(payload.getName());
         } catch (InvalidInputException ex){

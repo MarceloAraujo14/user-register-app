@@ -1,4 +1,4 @@
-package com.maraujo.userregister.form.chain;
+package com.maraujo.userregister.service.chain;
 
 public interface ExecutorChain<T> {
 

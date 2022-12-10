@@ -1,37 +1,38 @@
-package com.maraujo.userregister.form.chain;
+package com.maraujo.userregister.service.chain;
 
-import com.maraujo.userregister.form.InputPayload;
-import com.maraujo.userregister.form.exception.InvalidInputException;
+import com.maraujo.userregister.service.RegisterPayload;
+import com.maraujo.userregister.exception.InvalidInputException;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
 
-
-public class ValidateAddress implements ExecutorChain<InputPayload> {
+@Component
+public class ValidateAddress implements ExecutorChain<RegisterPayload> {
 
     public static final String POSTAL_CODE = "postalCode";
 
 
     @Override
-    public InputPayload execute(InputPayload payload) {
+    public RegisterPayload execute(RegisterPayload payload) {
         executeAddressValidate(payload);
         return payload;
     }
 
-    private static void executeAddressValidate(InputPayload payload){
-        Executor<InputPayload> executorAddress = new Executor<>(payload);
+    private static void executeAddressValidate(RegisterPayload payload){
+        Executor<RegisterPayload> executorAddress = new Executor<>(payload);
         executorAddress
                 .chain(new AddressValidate())
                 .chain(new PostalCodeValidate());
     }
 
-    static class AddressValidate implements ExecutorChain<InputPayload> {
+    static class AddressValidate implements ExecutorChain<RegisterPayload> {
 
         @Override
-        public InputPayload execute(InputPayload payload) {
+        public RegisterPayload execute(RegisterPayload payload) {
             try {
                 inputValidate(payload.getStreet(), "street");
             }catch (InvalidInputException ex){
@@ -61,10 +62,10 @@ public class ValidateAddress implements ExecutorChain<InputPayload> {
         }
     }
 
-    static class PostalCodeValidate implements ExecutorChain<InputPayload>{
+    static class PostalCodeValidate implements ExecutorChain<RegisterPayload>{
 
         @Override
-        public InputPayload execute(InputPayload payload) {
+        public RegisterPayload execute(RegisterPayload payload) {
             try {
                 inputValidate(payload.getPostalCode());
             }catch (InvalidInputException ex){

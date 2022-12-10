@@ -1,4 +1,4 @@
-package com.maraujo.userregister.form.exception;
+package com.maraujo.userregister.exception;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +14,13 @@ public class InvalidInputException extends RuntimeException{
 
     private Map<String, String> errorDetails;
 
-    public InvalidInputException() {
-    }
-
     public InvalidInputException(String error, String message) {
         this.error = error;
         this.message = message;
         this.errorDetails = Map.of(error, message);
+    }
+
+    public InvalidInputException(Map<String, String> errors) {
+        this.errorDetails = errors;
     }
 }
