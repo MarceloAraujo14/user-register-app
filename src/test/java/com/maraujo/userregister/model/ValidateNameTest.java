@@ -1,12 +1,9 @@
 package com.maraujo.userregister.model;
 
-import com.maraujo.userregister.form.chain.ValidateName;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class NameTest {
+class ValidateNameTest {
 
 //    //nome nao deveria ser nulo
 //    @Test

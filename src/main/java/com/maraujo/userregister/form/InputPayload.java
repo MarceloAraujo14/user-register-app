@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -20,7 +19,7 @@ public class InputPayload {
     private String birthDate;
     private String cpf;
     private String street;
-    private String number;
+    private String streetNumber;
     private String city;
     private String state;
     private String postalCode;

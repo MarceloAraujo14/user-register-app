@@ -14,7 +14,7 @@ import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_NAM
 public class ValidateName implements ExecutorChain<InputPayload> {
 
     public static final String REGEX_FULL_NAME = "^[a-zA-ZJ]+(([',. -][a-zA-ZJ ])?[a-zA-ZJ]*)*$";
-    public static final String NAME = "Name";
+    public static final String NAME = "name";
 
     @Override
     public InputPayload execute(InputPayload payload) {

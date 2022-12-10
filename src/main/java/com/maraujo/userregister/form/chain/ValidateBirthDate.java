@@ -14,7 +14,7 @@ public class ValidateBirthDate implements ExecutorChain<InputPayload>{
 
     private static final int MIN_AGE = 1;
     private static final int MAX_AGE = 100;
-    public static final String BIRTH_DATE = "BirthDate";
+    public static final String BIRTH_DATE = "birthDate";
     public static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     @Override
@@ -29,6 +29,7 @@ public class ValidateBirthDate implements ExecutorChain<InputPayload>{
 
     private static void inputValidate(String birthDate){
         if (Objects.isNull(birthDate)) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_BIRTH_DATE_NULL);
+        if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_BIRTH_DATE_EMPTY);
         LocalDate date;
         try {
           date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern(DD_MM_YYYY));
