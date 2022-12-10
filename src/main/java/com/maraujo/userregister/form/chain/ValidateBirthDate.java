@@ -8,7 +8,10 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.*;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_BEFORE_AFTER;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_FORMAT;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
 
 public class ValidateBirthDate implements ExecutorChain<InputPayload>{
 
@@ -28,8 +31,8 @@ public class ValidateBirthDate implements ExecutorChain<InputPayload>{
     }
 
     private static void inputValidate(String birthDate){
-        if (Objects.isNull(birthDate)) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_BIRTH_DATE_NULL);
-        if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_BIRTH_DATE_EMPTY);
+        if (Objects.isNull(birthDate)) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_CANNOT_BE_NULL);
+        if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_CANNOT_BE_EMPTY);
         LocalDate date;
         try {
           date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern(DD_MM_YYYY));

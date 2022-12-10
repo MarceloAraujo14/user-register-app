@@ -5,9 +5,10 @@ import com.maraujo.userregister.form.exception.InvalidInputException;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CPF_NULL;
-import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CPF_EMPTY;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
 import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CPF_INVALID;
+
 
 public class ValidateCPF implements ExecutorChain<InputPayload> {
 
@@ -22,8 +23,8 @@ public class ValidateCPF implements ExecutorChain<InputPayload> {
     }
 
     private static void inputValidate(String cpf){
-        if (Objects.isNull(cpf)) throw new InvalidInputException("cpf", ERROR_MSG_CPF_NULL);
-        if (cpf.isBlank()) throw new InvalidInputException("cpf", ERROR_MSG_CPF_EMPTY);
+        if (Objects.isNull(cpf)) throw new InvalidInputException("cpf", ERROR_MSG_CANNOT_BE_NULL);
+        if (cpf.isBlank()) throw new InvalidInputException("cpf", ERROR_MSG_CANNOT_BE_EMPTY);
         if (!isValidCPF(cpf)) throw new  InvalidInputException("cpf", ERROR_MSG_CPF_INVALID);
     }
 

@@ -5,9 +5,14 @@ import com.maraujo.userregister.form.exception.InvalidInputException;
 
 import java.util.Objects;
 
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_INVALID_PHONENUMBER;
+
 public class ValidatePhone implements ExecutorChain<InputPayload> {
 
     public static final String PHONE_NUMBER = "phoneNumber";
+
 
     @Override
     public InputPayload execute(InputPayload payload) {
@@ -20,9 +25,9 @@ public class ValidatePhone implements ExecutorChain<InputPayload> {
     }
 
     private static void inputValidate(String phone){
-        if (Objects.isNull(phone)) throw new InvalidInputException(PHONE_NUMBER,"Field phoneNumber cannot be null");
-        if (phone.isBlank()) throw new InvalidInputException(PHONE_NUMBER, "Field phoneNumber cannot be empty");
-        if(!isValidPhoneNumber(phone)) throw new InvalidInputException(PHONE_NUMBER, "Insert a valid phoneNumber");
+        if (Objects.isNull(phone)) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_CANNOT_BE_NULL);
+        if (phone.isBlank()) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_CANNOT_BE_EMPTY);
+        if(!isValidPhoneNumber(phone)) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_INVALID_PHONENUMBER);
     }
 
     public static boolean isValidPhoneNumber(String phoneNumber) {

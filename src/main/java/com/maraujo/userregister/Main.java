@@ -10,6 +10,7 @@ public class Main {
         ValidateCPF validateCPF = new ValidateCPF();
         ValidateAddress validateAddress = new ValidateAddress();
         ValidatePhone validatePhone = new ValidatePhone();
+        ValidateEmail validateEmail = new ValidateEmail();
 
         InputPayload inputPayload = InputPayload.builder()
                 .name("Jhon")
@@ -31,7 +32,8 @@ public class Main {
                 .chain(validateBirthDate)
                 .chain(validateCPF)
                 .chain(validateAddress)
-                .chain(validatePhone);
+                .chain(validatePhone)
+                .chain(validateEmail);
 
         System.out.println(inputPayload);
     }

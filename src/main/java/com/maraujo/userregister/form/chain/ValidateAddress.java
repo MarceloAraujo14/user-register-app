@@ -5,7 +5,15 @@ import com.maraujo.userregister.form.exception.InvalidInputException;
 
 import java.util.Objects;
 
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.form.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
+
+
 public class ValidateAddress implements ExecutorChain<InputPayload> {
+
+    public static final String POSTAL_CODE = "postalCode";
+
 
     @Override
     public InputPayload execute(InputPayload payload) {
@@ -48,8 +56,8 @@ public class ValidateAddress implements ExecutorChain<InputPayload> {
         }
 
         private static void inputValidate(String value, String field){
-            if (Objects.isNull(value)) throw new InvalidInputException(field, "Insert a valid " + field);
-            if (value.isBlank()) throw new InvalidInputException(field, "Insert a valid " + field);
+            if (Objects.isNull(value)) throw new InvalidInputException(field, ERROR_MSG_CANNOT_BE_NULL);
+            if (value.isBlank()) throw new InvalidInputException(field, ERROR_MSG_CANNOT_BE_EMPTY);
         }
     }
 
@@ -66,9 +74,9 @@ public class ValidateAddress implements ExecutorChain<InputPayload> {
         }
 
         private static void inputValidate(String postalCode){
-            if (Objects.isNull(postalCode)) throw new InvalidInputException("postalCode","Field postalCode cannot be null");
-            if (postalCode.isBlank()) throw new InvalidInputException("postalCode", "Field postalCode cannot be empty");
-            if(!isValidPostalCode(postalCode)) throw new InvalidInputException("postalCode", "Insert a valid postalCode");
+            if (Objects.isNull(postalCode)) throw new InvalidInputException(POSTAL_CODE,ERROR_MSG_CANNOT_BE_NULL);
+            if (postalCode.isBlank()) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_CANNOT_BE_EMPTY);
+            if(!isValidPostalCode(postalCode)) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_INVALID_POSTALCODE);
         }
 
         private static boolean isValidPostalCode(String postalCode){
