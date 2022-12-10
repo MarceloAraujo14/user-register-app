@@ -1,4 +1,4 @@
-package com.maraujo.userregister.model;
+package com.maraujo.userregister.form;
 
 import lombok.Getter;
 

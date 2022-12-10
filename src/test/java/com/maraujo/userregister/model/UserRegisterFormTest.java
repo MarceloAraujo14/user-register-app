@@ -1,5 +1,6 @@
 package com.maraujo.userregister.model;
 
+import com.maraujo.userregister.form.UserRegisterForm;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
