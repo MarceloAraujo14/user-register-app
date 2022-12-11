@@ -21,7 +21,7 @@ public class ValidatePhone implements ExecutorChain<RegisterPayload> {
         try {
             inputValidate(payload.getPhone());
         }catch (InvalidInputException ex){
-            payload.buildError(ex.getError(), ex.getMessage());
+            payload.putError(ex.getError(), ex.getMessage());
         }
         return payload;
     }

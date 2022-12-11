@@ -35,7 +35,7 @@ public class RegisterPayload {
 
     private Map<String, String> errors;
 
-    public void buildError(String error, String message){
+    public void putError(String error, String message){
         if (Objects.isNull(errors)){
             this.errors = new HashMap<>();
             this.errors.put(error, message);

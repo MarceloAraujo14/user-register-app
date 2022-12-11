@@ -3,7 +3,7 @@ package com.maraujo.userregister.service;
 
 import com.maraujo.userregister.repository.UserRegisterRepository;
 import com.maraujo.userregister.service.chain.Executor;
-import com.maraujo.userregister.service.chain.HandlerException;
+import com.maraujo.userregister.service.chain.ErrorHandler;
 import com.maraujo.userregister.service.chain.ValidateAddress;
 import com.maraujo.userregister.service.chain.ValidateBirthDate;
 import com.maraujo.userregister.service.chain.ValidateCPF;
@@ -23,7 +23,7 @@ public class UserRegisterFormServiceImpl implements UserRegisterFormService {
     private final ValidateAddress validateAddress;
     private final ValidatePhone validatePhone;
     private final ValidateEmail validateEmail;
-    private final HandlerException handler;
+    private final ErrorHandler handler;
 
     private final UserRegisterRepository userRegisterRepository;
 

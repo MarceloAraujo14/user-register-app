@@ -36,22 +36,22 @@ public class ValidateAddress implements ExecutorChain<RegisterPayload> {
             try {
                 inputValidate(payload.getStreet(), "street");
             }catch (InvalidInputException ex){
-                payload.buildError(ex.getError(), ex.getMessage());
+                payload.putError(ex.getError(), ex.getMessage());
             }
             try {
                 inputValidate(payload.getStreetNumber(), "streetNumber");
             }catch (InvalidInputException ex){
-                payload.buildError(ex.getError(), ex.getMessage());
+                payload.putError(ex.getError(), ex.getMessage());
             }
             try {
                 inputValidate(payload.getCity(), "city");
             }catch (InvalidInputException ex){
-                payload.buildError(ex.getError(), ex.getMessage());
+                payload.putError(ex.getError(), ex.getMessage());
             }
             try {
                 inputValidate(payload.getState(), "state");
             }catch (InvalidInputException ex){
-                payload.buildError(ex.getError(), ex.getMessage());
+                payload.putError(ex.getError(), ex.getMessage());
             }
             return payload;
         }
@@ -69,7 +69,7 @@ public class ValidateAddress implements ExecutorChain<RegisterPayload> {
             try {
                 inputValidate(payload.getPostalCode());
             }catch (InvalidInputException ex){
-                payload.buildError(ex.getError(), ex.getMessage());
+                payload.putError(ex.getError(), ex.getMessage());
             }
             return payload;
         }

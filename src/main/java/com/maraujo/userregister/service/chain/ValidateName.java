@@ -21,12 +21,12 @@ public class ValidateName implements ExecutorChain<RegisterPayload> {
         try {
             inputValidate(payload.getName());
         } catch (InvalidInputException ex){
-            payload.buildError(ex.getError(), ex.getMessage());
+            payload.putError(ex.getError(), ex.getMessage());
         }
         return payload;
     }
 
-    private static void inputValidate(String name){
+    static void inputValidate(String name){
         if (Objects.isNull(name)) throw new InvalidInputException(NAME, ERROR_MSG_CANNOT_BE_NULL);
         if (name.isBlank()) throw new InvalidInputException(NAME, ERROR_MSG_CANNOT_BE_EMPTY);
         if (!name.trim().contains(" ")) throw new InvalidInputException(NAME, ERROR_MSG_NAME_NOT_VALID);

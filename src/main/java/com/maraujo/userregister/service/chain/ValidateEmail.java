@@ -23,7 +23,7 @@ public class ValidateEmail implements ExecutorChain<RegisterPayload> {
         try {
             inputValidate(payload.getEmail());
         } catch (InvalidInputException ex){
-            payload.buildError(ex.getError(), ex.getMessage());
+            payload.putError(ex.getError(), ex.getMessage());
         }
         return payload;
     }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 @Component
-public class HandlerException implements ExecutorChain<RegisterPayload> {
+public class ErrorHandler implements ExecutorChain<RegisterPayload> {
 
     @Override
     public RegisterPayload execute(RegisterPayload payload) {

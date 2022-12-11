@@ -18,7 +18,7 @@ public class ValidateCPF implements ExecutorChain<RegisterPayload> {
         try {
             inputValidate(payload.getCpf());
         } catch (InvalidInputException ex){
-            payload.buildError(ex.getError(), ex.getMessage());
+            payload.putError(ex.getError(), ex.getMessage());
         }
         return payload;
     }

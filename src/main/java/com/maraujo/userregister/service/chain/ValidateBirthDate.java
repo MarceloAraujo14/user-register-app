@@ -27,7 +27,7 @@ public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
         try {
             inputValidate(payload.getBirthDate());
         } catch (InvalidInputException ex){
-            payload.buildError(ex.getError(), ex.getMessage());
+            payload.putError(ex.getError(), ex.getMessage());
         }
         return payload;
     }
