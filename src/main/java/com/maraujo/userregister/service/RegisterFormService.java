@@ -1,5 +1,5 @@
 package com.maraujo.userregister.service;
 
-public interface UserRegisterFormService {
+public interface RegisterFormService {
     void execute(RegisterPayload registerPayload);
 }

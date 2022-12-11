@@ -20,7 +20,7 @@ public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
     private static final int MIN_AGE = 1;
     private static final int MAX_AGE = 100;
     public static final String BIRTH_DATE = "birthDate";
-    public static final String DD_MM_YYYY = "dd/MM/yyyy";
+    public static final String DD_MM_YYYY = "dd-MM-yyyy";
 
     @Override
     public RegisterPayload execute(RegisterPayload payload) {
@@ -37,6 +37,7 @@ public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
         if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_CANNOT_BE_EMPTY);
         LocalDate date;
         try {
+            birthDate = birthDate.replace("/", "-");
           date = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern(DD_MM_YYYY));
         } catch (Exception exception){
             throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_BIRTH_DATE_FORMAT);

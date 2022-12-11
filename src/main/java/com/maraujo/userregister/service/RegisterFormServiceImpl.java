@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class UserRegisterFormServiceImpl implements UserRegisterFormService {
+public class RegisterFormServiceImpl implements RegisterFormService {
 
     private final ValidateName validateName;
     private final ValidateBirthDate validateBirthDate;
