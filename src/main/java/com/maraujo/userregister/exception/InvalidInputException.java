@@ -12,7 +12,7 @@ public class InvalidInputException extends RuntimeException{
     private String error;
     private String message;
 
-    private Map<String, String> errorDetails;
+    private final Map<String, String> errorDetails;
 
     public InvalidInputException(String error, String message) {
         this.error = error;

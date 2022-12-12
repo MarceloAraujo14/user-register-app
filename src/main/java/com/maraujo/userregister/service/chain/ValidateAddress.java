@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
 
 @Component
@@ -57,8 +57,8 @@ public class ValidateAddress implements ExecutorChain<RegisterPayload> {
         }
 
         private static void inputValidate(String value, String field){
-            if (Objects.isNull(value)) throw new InvalidInputException(field, ERROR_MSG_CANNOT_BE_NULL);
-            if (value.isBlank()) throw new InvalidInputException(field, ERROR_MSG_CANNOT_BE_EMPTY);
+            if (Objects.isNull(value)) throw new InvalidInputException(field, ERROR_MSG_FIELD_CANNOT_BE_NULL);
+            if (value.isBlank()) throw new InvalidInputException(field, ERROR_MSG_FIELD_CANNOT_BE_EMPTY);
         }
     }
 
@@ -75,8 +75,8 @@ public class ValidateAddress implements ExecutorChain<RegisterPayload> {
         }
 
         private static void inputValidate(String postalCode){
-            if (Objects.isNull(postalCode)) throw new InvalidInputException(POSTAL_CODE,ERROR_MSG_CANNOT_BE_NULL);
-            if (postalCode.isBlank()) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_CANNOT_BE_EMPTY);
+            if (Objects.isNull(postalCode)) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_FIELD_CANNOT_BE_NULL);
+            if (postalCode.isBlank()) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_FIELD_CANNOT_BE_EMPTY);
             if(!isValidPostalCode(postalCode)) throw new InvalidInputException(POSTAL_CODE, ERROR_MSG_INVALID_POSTALCODE);
         }
 

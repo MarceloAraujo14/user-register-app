@@ -8,8 +8,8 @@ public class Constants {
 
         private ErrorMessage() {}
 
-        public static final String ERROR_MSG_CANNOT_BE_EMPTY = "Field cannot be empty";
-        public static final String ERROR_MSG_CANNOT_BE_NULL = "Field cannot be null";
+        public static final String ERROR_MSG_FIELD_CANNOT_BE_EMPTY = "Field cannot be empty";
+        public static final String ERROR_MSG_FIELD_CANNOT_BE_NULL = "Field cannot be null";
         public static final String ERROR_MSG_NAME_NOT_VALID = "Field name must contain a name and at least one surname";
         public static final String ERROR_MSG_BIRTH_DATE_BEFORE_AFTER = "Date of birth must be between 1 and 100 years ago";
         public static final String ERROR_MSG_BIRTH_DATE_FORMAT = "Field Birth Date should be format as dd/MM/yyyy";

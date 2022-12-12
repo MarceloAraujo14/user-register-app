@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_EMAIL;
 
 
@@ -29,9 +29,9 @@ public class ValidateEmail implements ExecutorChain<RegisterPayload> {
     }
 
     private static void inputValidate(String email){
-        if (Objects.isNull(email)) throw new InvalidInputException(EMAIL, ERROR_MSG_CANNOT_BE_NULL);
-        if (email.isBlank()) throw new InvalidInputException(EMAIL, ERROR_MSG_CANNOT_BE_EMPTY);
-        if (!email.trim().contains(" ") || !email.matches(EMAIL_REGEX)) throw new InvalidInputException(EMAIL, ERROR_MSG_INVALID_EMAIL);
+        if (Objects.isNull(email)) throw new InvalidInputException(EMAIL, ERROR_MSG_FIELD_CANNOT_BE_NULL);
+        if (email.isBlank()) throw new InvalidInputException(EMAIL, ERROR_MSG_FIELD_CANNOT_BE_EMPTY);
+        if (email.trim().contains(" ") || !email.matches(EMAIL_REGEX)) throw new InvalidInputException(EMAIL, ERROR_MSG_INVALID_EMAIL);
     }
 
 }

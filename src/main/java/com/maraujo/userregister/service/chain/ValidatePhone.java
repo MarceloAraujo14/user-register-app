@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_PHONENUMBER;
 
 @Component
@@ -27,8 +27,8 @@ public class ValidatePhone implements ExecutorChain<RegisterPayload> {
     }
 
     private static void inputValidate(String phone){
-        if (Objects.isNull(phone)) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_CANNOT_BE_NULL);
-        if (phone.isBlank()) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_CANNOT_BE_EMPTY);
+        if (Objects.isNull(phone)) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_FIELD_CANNOT_BE_NULL);
+        if (phone.isBlank()) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_FIELD_CANNOT_BE_EMPTY);
         if(!isValidPhoneNumber(phone)) throw new InvalidInputException(PHONE_NUMBER, ERROR_MSG_INVALID_PHONENUMBER);
     }
 

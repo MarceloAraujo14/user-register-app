@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +22,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("street"));
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("street"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("street"));
     }
 
     @Test
@@ -32,7 +32,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("street"));
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("street"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("street"));
     }
 
     @Test
@@ -42,7 +42,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("streetNumber"));
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("streetNumber"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("streetNumber"));
     }
 
     @Test
@@ -52,7 +52,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("streetNumber"));
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("streetNumber"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("streetNumber"));
     }
 
     @Test
@@ -62,7 +62,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("city"));
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("city"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("city"));
     }
 
     @Test
@@ -72,7 +72,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("city"));
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("city"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("city"));
     }
 
     @Test
@@ -82,7 +82,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("state"));
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("state"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("state"));
     }
 
     @Test
@@ -92,7 +92,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("state"));
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("state"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("state"));
     }
 
     @Test
@@ -102,7 +102,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("postalCode"));
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("postalCode"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("postalCode"));
     }
 
     @Test
@@ -112,7 +112,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("postalCode"));
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("postalCode"));
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("postalCode"));
     }
 
     @Test

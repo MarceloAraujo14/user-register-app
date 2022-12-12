@@ -11,8 +11,8 @@ import java.util.Objects;
 
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_BEFORE_AFTER;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_FORMAT;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 
 @Component
 public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
@@ -33,8 +33,8 @@ public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
     }
 
     private static void inputValidate(String birthDate){
-        if (Objects.isNull(birthDate)) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_CANNOT_BE_NULL);
-        if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_CANNOT_BE_EMPTY);
+        if (Objects.isNull(birthDate)) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_FIELD_CANNOT_BE_NULL);
+        if (birthDate.isBlank()) throw new InvalidInputException(BIRTH_DATE, ERROR_MSG_FIELD_CANNOT_BE_EMPTY);
         LocalDate date;
         try {
             birthDate = birthDate.replace("/", "-");

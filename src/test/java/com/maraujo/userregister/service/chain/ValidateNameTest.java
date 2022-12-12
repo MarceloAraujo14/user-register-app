@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_EMPTY;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_NAME_NOT_VALID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -21,7 +21,7 @@ class ValidateNameTest {
         payload = validateName.execute(payload);
         assertTrue(payload.getErrors().containsKey("name"),
                 "execute should set an error on the payload when the name is null");
-        assertEquals(ERROR_MSG_CANNOT_BE_NULL, payload.getErrors().get("name"),
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_NULL, payload.getErrors().get("name"),
                 "execute should set the correct error message when the name is null");
     }
 
@@ -31,7 +31,7 @@ class ValidateNameTest {
         payload = validateName.execute(payload);
         assertTrue(payload.getErrors().containsKey("name"),
                 "execute should set an error on the payload when the name is an empty string");
-        assertEquals(ERROR_MSG_CANNOT_BE_EMPTY, payload.getErrors().get("name"),
+        assertEquals(ERROR_MSG_FIELD_CANNOT_BE_EMPTY, payload.getErrors().get("name"),
                 "execute should set the correct error message when the name is an empty string");
     }
 
