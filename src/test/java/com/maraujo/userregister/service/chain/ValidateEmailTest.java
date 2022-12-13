@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_EMAIL;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_EMAIL_INVALID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,7 +27,7 @@ class ValidateEmailTest {
         payload = validateEmail.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("email"));
-        assertEquals(ERROR_MSG_INVALID_EMAIL, payload.getErrors().get("email"));
+        assertEquals(ERROR_MSG_EMAIL_INVALID, payload.getErrors().get("email"));
     }
 
     @Test
@@ -36,7 +36,7 @@ class ValidateEmailTest {
         payload = validateEmail.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("email"));
-        assertEquals(ERROR_MSG_INVALID_EMAIL, payload.getErrors().get("email"));
+        assertEquals(ERROR_MSG_EMAIL_INVALID, payload.getErrors().get("email"));
     }
 
     @Test
@@ -45,7 +45,7 @@ class ValidateEmailTest {
         payload = validateEmail.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("email"));
-        assertEquals(ERROR_MSG_INVALID_EMAIL, payload.getErrors().get("email"));
+        assertEquals(ERROR_MSG_EMAIL_INVALID, payload.getErrors().get("email"));
     }
 
     @Test

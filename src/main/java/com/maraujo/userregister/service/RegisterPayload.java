@@ -53,6 +53,7 @@ public class RegisterPayload {
                 .streetNumber(this.streetNumber)
                 .city(this.city)
                 .state(this.state)
+                .postalCode(this.postalCode)
                 .phone(this.phone)
                 .email(this.email)
                 .build();

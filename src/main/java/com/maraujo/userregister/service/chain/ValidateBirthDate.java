@@ -1,7 +1,8 @@
 package com.maraujo.userregister.service.chain;
 
-import com.maraujo.userregister.service.RegisterPayload;
 import com.maraujo.userregister.exception.InvalidInputException;
+import com.maraujo.userregister.service.RegisterPayload;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,7 +14,10 @@ import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_BIRTH_DATE_FORMAT;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
+import static com.maraujo.userregister.service.Constants.StateProcess.FAILURE;
+import static com.maraujo.userregister.service.Constants.StateProcess.PROCESSING;
 
+@Log4j2
 @Component
 public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
 
@@ -24,10 +28,12 @@ public class ValidateBirthDate implements ExecutorChain<RegisterPayload>{
 
     @Override
     public RegisterPayload execute(RegisterPayload payload) {
+        log.info("M execute, payload={}, state={}", payload, PROCESSING);
         try {
             inputValidate(payload.getBirthDate());
         } catch (InvalidInputException ex){
             payload.putError(ex.getError(), ex.getMessage());
+            log.info("M execute, payload={}, error={}, state={}", payload, ex.getMessage(), FAILURE);
         }
         return payload;
     }

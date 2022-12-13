@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_EMPTY;
 import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_FIELD_CANNOT_BE_NULL;
-import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_INVALID_POSTALCODE;
+import static com.maraujo.userregister.service.Constants.ErrorMessage.ERROR_MSG_POSTALCODE_INVALID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidateAddressTest {
@@ -122,7 +122,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("postalCode"));
-        assertEquals(ERROR_MSG_INVALID_POSTALCODE, payload.getErrors().get("postalCode"));
+        assertEquals(ERROR_MSG_POSTALCODE_INVALID, payload.getErrors().get("postalCode"));
     }
 
     @Test
@@ -132,7 +132,7 @@ class ValidateAddressTest {
         payload = validateAddress.execute(payload);
 
         assertTrue(payload.getErrors().containsKey("postalCode"));
-        assertEquals(ERROR_MSG_INVALID_POSTALCODE, payload.getErrors().get("postalCode"));
+        assertEquals(ERROR_MSG_POSTALCODE_INVALID, payload.getErrors().get("postalCode"));
     }
 
     @Test
